@@ -41,14 +41,6 @@ def upload_file():
         return jsonify({'message': f'File processed as {filename}'})
     return jsonify({'message': 'File upload failed'}), 500
 
-@app.route('/generate_question', methods=['POST'])
-def generate():
-    raw_image = (Image.open(os.path.join(app.config['UPLOAD_FOLDER'], filename))).convert('RGB')
-    processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
-    model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
-    inputs = processor(raw_image, return_tensors="pt")
-    caption_ids = model.generate(**inputs)
-    caption = processor.decode(caption_ids[0], skip_special_tokens=True)
 @app.route('/ask1', methods=['POST'])
 def ask1():
     if ('filename' in globals()):

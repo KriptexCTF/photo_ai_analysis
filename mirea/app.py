@@ -4,8 +4,6 @@ from werkzeug.utils import secure_filename
 
 from PIL import Image
 from transformers import BlipProcessor, BlipForQuestionAnswering
-import torch
-import sys
 
 app = Flask(__name__)
 

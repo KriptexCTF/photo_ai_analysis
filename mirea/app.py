@@ -65,8 +65,7 @@ def ask2():
             out = model.generate(**inputs, max_length=256, num_beams=5)
             answer = f"MIREA_GPT: {processor.decode(out[0], skip_special_tokens=True)}"
             #return jsonify({'question': question, 'message': answer})
-            return jsonify({'message': answer})
-    else:        
+            return jsonify({'message': answer})        
         return jsonify({'message': 'No question provided'}), 400
 
 if __name__ == '__main__':

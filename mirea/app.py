@@ -50,22 +50,24 @@ def ask1():
         return jsonify({'message': 'Please upload picture!!!'}), 400
 @app.route('/ask2', methods=['POST'])
 def ask2():
-    raw_image = (Image.open(os.path.join(app.config['UPLOAD_FOLDER'], filename))).convert('RGB')
-    processor = BlipProcessor.from_pretrained("Salesforce/blip-vqa-base")
-    model = BlipForQuestionAnswering.from_pretrained("Salesforce/blip-vqa-base")
-
-    # Обработка вопроса от пользователя
-    question = request.form.get('question')
-    if question:
-        # Пример простого ответа на вопрос
-        #answer = f"Your question was: {question} {filename}"
-
-        inputs = processor(raw_image, question, return_tensors="pt")
-        out = model.generate(**inputs, max_length=256, num_beams=5)
-        answer = f"MIREA_GPT: {processor.decode(out[0], skip_special_tokens=True)}"
-        #return jsonify({'question': question, 'message': answer})
-        return jsonify({'message': answer})
-    return jsonify({'message': 'No question provided'}), 400
+    if ('filename' in globals()):
+        raw_image = (Image.open(os.path.join(app.config['UPLOAD_FOLDER'], filename))).convert('RGB')
+        processor = BlipProcessor.from_pretrained("Salesforce/blip-vqa-base")
+        model = BlipForQuestionAnswering.from_pretrained("Salesforce/blip-vqa-base")
+    
+        # Обработка вопроса от пользователя
+        question = request.form.get('question')
+        if question:
+            # Пример простого ответа на вопрос
+            #answer = f"Your question was: {question} {filename}"
+    
+            inputs = processor(raw_image, question, return_tensors="pt")
+            out = model.generate(**inputs, max_length=256, num_beams=5)
+            answer = f"MIREA_GPT: {processor.decode(out[0], skip_special_tokens=True)}"
+            #return jsonify({'question': question, 'message': answer})
+            return jsonify({'message': answer})
+    else:        
+        return jsonify({'message': 'No question provided'}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)

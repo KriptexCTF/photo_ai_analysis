@@ -7,4 +7,4 @@
 ![Screenshot 2024-07-13 at 05 01 43](https://github.com/user-attachments/assets/0bf8fb73-ea34-4c51-a8d7-d6232fd0303d)
 
 
-developers: Kriptex and Heavy-Gamer
+developers: KriptexCTF and Heavy-Gamer

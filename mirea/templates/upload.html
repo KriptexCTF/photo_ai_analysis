@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Мессенджер</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- JavaScript -->
+    <script>
+      async function uploadFile() {
+          const fileInput = document.getElementById('file');
+          const formData = new FormData();
+          formData.append('file', fileInput.files[0]);
+
+          const response = await fetch('/upload', {
+              method: 'POST',
+              body: formData
+          });
+          const result = await response.json();
+          document.getElementById('messages').innerHTML += `<div class="upload_info">${result.message}</div>`;
+      }
+
+      async function askQuestion() {
+          const questionInput = document.getElementById('question');
+          const formData = new FormData();
+          formData.append('question', questionInput.value);
+
+          const response1 = await fetch('/ask1', {
+              method: 'POST',
+              body: formData
+          });
+          const result1 = await response1.json();
+          document.getElementById('messages').innerHTML += `<div id="user_question">${result1.message}</div>`;
+
+          const response2 = await fetch('/ask2', {
+              method: 'POST',
+              body: formData
+          });
+          const result2 = await response2.json();
+          document.getElementById('messages').innerHTML += `<div id="gpt_answer">${result2.message}</div>`;
+      }
+    </script>
+    <!-- CSS -->
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: rgb(162, 162, 189);
+        }
+        .base{
+          margin-top: 5%;
+        }
+
+        #messages {
+          background-color: white;
+          border: 1px solid #ccc;
+          padding: 10px;
+          margin-bottom: 10px;
+          height: 250px;
+          overflow-y: scroll;
+          width: 50%;
+          margin-left: 20px;
+            border:1px solid black;
+            border-radius:20px;
+        }
+
+        #question {
+          flex: none;
+          width: 400px;
+          margin-bottom: 10px;
+        }
+        #file {
+            margin-bottom: 10px;
+            margin-left: 20px;
+            border-radius:20px;
+        }
+
+          button {
+          display: block;
+          margin-bottom: 10px;
+          margin-left: 20px;
+
+
+              cursor: pointer;
+              outline: none;
+              text-decoration: none;
+              font-size: 16px;
+              vertical-align: middle;
+              color: rgb(255 255 255);
+              text-align: center;
+              border-radius: 4px;
+              background-color: #419152;
+              line-height: 22px;
+              height: 40px;
+              padding: 10px 20px;
+              box-sizing: border-box;
+              border: none;
+
+              transition: background-color 0.2s;
+        }
+        #descript{
+            margin-left: 20px;
+            margin-top: 45px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #upload_info{
+            padding: 4px;
+            margin: 0px 0px 10px 0px;
+        }
+        #user_question{
+            background-color: mediumpurple;
+            border:1px solid black;
+            border-radius:5px;
+            padding: 4px;
+            margin: 0px 0px 10px 0px;
+            word-wrap: break-word;
+        }
+        #gpt_answer{
+            background-color: whitesmoke;
+            border:1px solid black;
+            border-radius:5px;
+            padding: 4px;
+            margin: 0px 0px 10px 20px;
+            word-wrap: break-word;
+        }
+        #photo1{
+            max-width: 30%;
+            float: right;
+            margin-right: 10%;
+        }
+        #plan{
+            position: relative;
+            float: right;
+            margin-right: 15%;
+            font-size: 30px;
+            font-weight: bold;
+            position: page;
+            background-color: palegreen;
+            padding: 1%;
+            border-radius:5px;
+        }
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="color: deeppink">AI & EDU</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Переключатель навигации">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link" href="/">Main</a>
+              <a class="nav-link active" aria-current="page" href="#">Messenger</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <div class="base">
+      <div>
+          <img id="photo1" src="/static/photo1.jpg">
+      </div>
+      <div id="messages"></div>
+      <input type="file" id="file"><button onclick="uploadFile()">Loading</button>
+        <div><p id="plan">
+            1. Upload a picture<br>
+            2. Ask a question<br>
+            3. Get an answer
+        </p></div>
+      <br>
+        <div id="descript"><p>Ask the neural network a question</p></div>
+      <div class="input-group mb-3" style="position: absolute">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1" onclick="askQuestion()">Button</button>
+
+        <input type="text" id="question" class="form-control" placeholder="" aria-label="Пример текста с надстройкой кнопкой" aria-describedby="button-addon1">
+      </div>
+    </div>
+
+</body>
+</html>

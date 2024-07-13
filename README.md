@@ -1,4 +1,3 @@
-# photo_ai_analysis
 
 ![Screenshot 2024-07-13 at 05 01 02](https://github.com/user-attachments/assets/573edba1-19de-4d15-8fc8-c39cf333c2ee)
 

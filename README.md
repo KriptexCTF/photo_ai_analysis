@@ -5,4 +5,6 @@
 ![Screenshot 2024-07-13 at 05 01 11](https://github.com/user-attachments/assets/d320dcbf-eb99-4a38-84fc-380f2b6c7758)
 
 ![Screenshot 2024-07-13 at 05 01 43](https://github.com/user-attachments/assets/0bf8fb73-ea34-4c51-a8d7-d6232fd0303d)
-developers: Kriptox and Heavy-Gamer
+
+
+developers: Kriptex and Heavy-Gamer

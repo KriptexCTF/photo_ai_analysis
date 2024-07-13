@@ -1,7 +1,7 @@
 # photo_ai_analysis
 
-![Screenshot 2024-07-12 at 23 35 25](https://github.com/user-attachments/assets/b3ab6240-be16-4b69-8688-55186b51131a)
+![Screenshot 2024-07-13 at 05 01 02](https://github.com/user-attachments/assets/573edba1-19de-4d15-8fc8-c39cf333c2ee)
 
-![Screenshot 2024-07-12 at 23 35 34](https://github.com/user-attachments/assets/0da340eb-45ca-404d-aff9-76447a57a7cb)
+![Screenshot 2024-07-13 at 05 01 11](https://github.com/user-attachments/assets/d320dcbf-eb99-4a38-84fc-380f2b6c7758)
 
-![Screenshot 2024-07-12 at 23 36 35](https://github.com/user-attachments/assets/6774566a-917f-4697-bf04-345030b05564)
+![Screenshot 2024-07-13 at 05 01 43](https://github.com/user-attachments/assets/0bf8fb73-ea34-4c51-a8d7-d6232fd0303d)
